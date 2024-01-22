@@ -1,0 +1,62 @@
+syntax = "proto3";
+
+message Tournament {
+  string id = 1;
+  string name = 2;
+  string description = 3;
+  string start_date = 4;
+  string end_date = 5;
+  string status = 6;
+  string genre = 7;
+  string prizePool = 8;
+  int max_participants = 10;
+  int author_id = 11;
+}
+
+//give me the rest of the protobuff defintions for the services and messages
+
+service TournamentService {
+  rpc GetAllTournaments(GetAllTournamentsRequest) returns (stream GetAllTournamentResponse) {}
+  rpc GetTournamentById(GetTournamentByIdRequest) returns (GetTournamentByIdResponse) {}
+  rpc CreateTournament(CreateTournamentRequests) returns (CreateTouramentResponse) {}
+  rpc UpdateTournament(UpdateTournamentRequest) returns (UpdateTournamentResponse) {}
+  rpc DeleteTournament(DeleteTournamentRequest) returns (DeleteTournamentResponse) {}
+}
+
+message GetAllTournamentsRequest {}
+
+message GetAllTournamentResponse {
+  repeated Tournament tournaments = 1;
+}
+
+message GetTournamentByIdRequest {
+  string id = 1;
+}
+
+message GetTournamentByIdResponse {
+  Tournament tournament = 1;
+}
+
+message CreateTournamentRequest {
+  Tournament tournament = 1;
+}
+
+message CreateTournamentResponse {
+  Tournament tournament = 1;
+}
+
+message UpdateTournamentRequest {
+  Tournament tournament = 1;
+}
+
+message UpdateTournamentResponse {
+  Tournament tournament = 1;
+}
+
+message DeleteTournamentRequest {
+  string id = 1;
+}
+
+message DeleteTournamentResponse {
+  string id = 1;
+}
